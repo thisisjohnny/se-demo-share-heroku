@@ -1,0 +1,91 @@
+<div class="slds-grid slds-gutters">
+  <div class="slds-col slds-size_2-of-3">
+    <div class="slds-box slds-theme_default slds-box_x-small slds-m-around_x-small">
+      <div class="slds-text-longform">
+        <div class="slds-text-heading_medium">Partner Onboarding</div>
+        <p>Here at Ohana, Inc., we love our partners! And now it's even easier to join our family. Simply
+          fill out the following form and one of our representatives will follow up with you to complete
+          the signup process.</p>
+          <form id="partner_onboarding" method="post" action="/send">
+            <fieldset class="slds-form-element slds-form_compound">
+              <legend class="slds-form-element__legend slds-form-element__label">Personal Information</legend>
+              <div class="slds-form-element__control">
+                <div class="slds-form-element__group">
+                  <div class="slds-form-element__row">
+                    <div class="slds-form-element slds-size_1-of-2">
+                      <label class="slds-form-element__label" for="first_name">First Name</label>
+                      <div class="slds-form-element__control">
+                        <input type="text" id="first_name" name="first_name" class="slds-input" />
+                      </div>
+                    </div>
+                    <div class="slds-form-element slds-size_1-of-2">
+                      <label class="slds-form-element__label" for="last_name">Last Name</label>
+                      <div class="slds-form-element__control">
+                        <input type="text" id="last_name" name="last_name" class="slds-input" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="slds-form-element__row">
+                    <div class="slds-form-element slds-size_1-of-1">
+                      <label class="slds-form-element__label" for="email">Email</label>
+                      <div class="slds-form-element__control">
+                        <input type="text" id="email" name="email" class="slds-input" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+            <fieldset class="slds-form-element slds-form_compound">
+              <legend class="slds-form-element__legend slds-form-element__label">Company Information</legend>
+              <div class="slds-form-element__control">
+                <div class="slds-form-element__group">
+                  <div class="slds-form-element__row">
+                    <div class="slds-form-element slds-size_1-of-1">
+                      <label class="slds-form-element__label" for="company">Company Name</label>
+                      <div class="slds-form-element__control">
+                        <input type="text" id="company" name="company" class="slds-input" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="slds-form-element__row">
+                    <div class="slds-form-element slds-size_1-of-2">
+                      <label class="slds-form-element__label" for="company_phone">Phone</label>
+                      <div class="slds-form-element__control">
+                        <input type="text" id="company_phone" name="company_phone" class="slds-input" />
+                        <div class="slds-form-element__help">ex: (555) 555-5555</div>
+                      </div>
+                    </div>
+                    <div class="slds-form-element slds-size_1-of-2">
+                      <label class="slds-form-element__label" for="company_website">Website</label>
+                      <div class="slds-form-element__control">
+                        <input type="text" id="company_website" name="company_website" class="slds-input" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+            <button class="slds-button slds-button_brand" onclick="document.getElementById('partner_onboarding').submit()">
+              Submit
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="slds-col slds-size_1-of-3">
+      <div class="slds-box slds-theme_inverse slds-box_x-small slds-m-around_x-small">
+        <div class="slds-text-heading_medium">Benefits of becoming a partner</div>
+        <p>The best part of becoming a partner? All the extra benefits! When you become an Ohana, Inc. partner, you
+          get access to the following:
+        </p>
+        <ul class="slds-list_dotted slds-list_vertical-space-medium">
+          <li>Unlimited supply of the <i>highest</i> of high-fives</li>
+          <li>Invitations to exclusive partner-only events</li>
+          <li>A special enamel pin to show off to all your friends</li>
+          <li>Friends and family discounts on approved items</li>
+        </ul>
+        <p>... And more!</p>
+      </div>
+    </div>
+  </div>

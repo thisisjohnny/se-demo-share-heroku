@@ -1,0 +1,47 @@
+require 'sinatra'
+require 'restforce'
+
+enable :sessions
+salesforce = Restforce.new
+
+get '/' do
+  @page_title = 'Home'
+  erb :index
+end
+
+post '/send' do
+  @company          = params[:company]
+  @company_phone    = params[:company_phone]
+  @company_website  = params[:company_website]
+  @first_name       = params[:first_name]
+  @last_name        = params[:last_name]
+  @email            = params[:email]
+
+  #salesforce custom REST callout
+  #salesforce.get('/services/apexrest/Onboarding',
+  #               company: '',
+  #               company_website: '',
+  #               company_phone: '',
+  #               first_name: '',
+  #               last_name: '',
+  #               email: ''
+  #)
+
+  session[:name]    = @first_name
+  session[:email]   = @email
+  session[:company] = @company
+  redirect to('/thanks')
+end
+
+get '/thanks' do
+  @page_title       = 'Thanks'
+  @name             = session[:name]
+  @email            = session[:email]
+  @company          = session[:company]
+  erb :thanks
+end
+
+get '/*' do
+  @page_title = 'Home'
+  erb :index
+end
