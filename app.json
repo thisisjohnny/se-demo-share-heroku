@@ -1,0 +1,7 @@
+{
+  "name": "Salesforce SE Heroku Demo Share",
+  "description": "A lightweight Ruby app using the Sinatra framework and Lightning Design System",
+  "repository": "https://github.com/thisisjohnny/se-demo-share-heroku",
+  "logo": "https://i.imgur.com/kmFCXf8.png",
+  "keywords": ["ruby", "sinatra", "salesforce", "heroku"]
+}

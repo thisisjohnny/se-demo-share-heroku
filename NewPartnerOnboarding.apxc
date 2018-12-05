@@ -1,0 +1,62 @@
+@RestResource(urlMapping='/Onboarding/*')
+global class NewPartnerOnboarding {
+	@HttpPost
+    global static Id registerPartner(String company, String companyPhone, String companyWebsite, String firstName, String lastName, String email){
+        // create new partner account
+        Account partnerAccount		= new Account();
+        partnerAccount.Name				= company;
+        partnerAccount.Phone			= companyPhone;
+        partnerAccount.Website		= companyWebsite;
+        insert partnerAccount;
+
+        // create new partner contact
+        Contact partnerContact		= new Contact();
+        partnerContact.AccountId	= partnerAccount.Id;
+        partnerContact.FirstName	= firstName;
+        partnerContact.LastName		= lastName;
+        partnerContact.Email			= email;
+        insert partnerContact;
+
+        // create new case for follow-up
+        createPartnerCase(partnerAccount.Id, partnerAccount.Name, partnerContact.Id);
+
+        // add contact to campaign
+        createPartnerCampaignMember(partnerContact.Id);
+
+        return partnerAccount.Id;
+    }
+
+    @future
+    public static void createPartnerCase(Id partnerAccountId, String partnerAccountName, Id partnerContactId){
+        // create dml options to turn on auto-assignment rules
+        Database.DMLOptions dmlOpts = new Database.DMLOptions();
+        dmlOpts.assignmentRuleHeader.useDefaultRule = true;
+
+		// create new case
+        Case partnerCase 					= new Case();
+        partnerCase.Reason				= 'Other';
+        partnerCase.Type					= 'New Partner Registration';
+        partnerCase.Origin				= 'Web';
+        partnerCase.Status				= 'New';
+        partnerCase.Priority			= 'Medium';
+        partnerCase.Subject				= 'New partner: ' + partnerAccountName;
+        partnerCase.AccountId			= partnerAccountId;
+        partnerCase.ContactId			= partnerContactId;
+
+        partnerCase.setOptions(dmlOpts);
+        insert partnerCase;
+    }
+
+    @future
+    public static void createPartnerCampaignMember(Id partnerContactId){
+		// identify currently active partner onboarding campaign
+		Active_Partner_Campaign__mdt partnerCampaign = [SELECT Campaign_Id__c FROM Active_Partner_Campaign__mdt WHERE Is_Active__c = true LIMIT 1];
+
+        // create new campaign member
+        CampaignMember partnerCM 	= new CampaignMember();
+        partnerCM.CampaignId			= Id.valueOf(partnerCampaign.Campaign_Id__c);
+        partnerCM.ContactId				= partnerContactId;
+        partnerCM.Status					= 'Planned';
+        insert partnerCM;
+    }
+}

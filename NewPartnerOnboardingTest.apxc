@@ -1,0 +1,21 @@
+@isTest(SeeAllData=true)
+public class NewPartnerOnboardingTest {
+    @isTest static void testRegisterPartner(){
+        String company					      = 'Jawn, LLC';
+        String companyPhone			      = '555 555 5555';
+        String companyWebsite         = 'https://jawnllc.herokuapp.com';
+        String firstName				      = 'Cholly';
+        String lastName					      = 'Gumboot';
+        String email					        = 'cgumboot@example.com';
+
+        test.startTest();
+        Id newPartnerId					      = NewPartnerOnboarding.registerPartner(company, companyPhone, companyWebsite, firstName, lastName, email);
+        test.stopTest();
+
+        List<Case> cList				      = new List<Case>([SELECT Id, Subject FROM Case WHERE AccountId = :newPartnerId]);
+        List<CampaignMember> cmList   = new List<CampaignMember>([SELECT Id, Contact.Name FROM CampaignMember WHERE Contact.Email = :email]);
+
+        system.assertEquals(1, cList.size());
+        system.assertEquals(1, cmList.size());
+    }
+}

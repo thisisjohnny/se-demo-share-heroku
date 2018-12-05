@@ -18,14 +18,14 @@ post '/send' do
   @email            = params[:email]
 
   #salesforce custom REST callout
-  #salesforce.get('/services/apexrest/Onboarding',
-  #               company: '',
-  #               company_website: '',
-  #               company_phone: '',
-  #               first_name: '',
-  #               last_name: '',
-  #               email: ''
-  #)
+  salesforce.post('/services/apexrest/Onboarding/registerPartner',
+                 company:         "#{@company}",
+                 companyWebsite:  "#{@company_website}",
+                 companyPhone:    "#{@company_phone}",
+                 firstName:       "#{@first_name}",
+                 lastName:        "#{@last_name}",
+                 email:           "#{@email}"
+  )
 
   session[:name]    = @first_name
   session[:email]   = @email
