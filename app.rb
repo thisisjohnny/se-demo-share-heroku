@@ -34,7 +34,7 @@ post '/send' do
 end
 
 get '/thanks' do
-  @page_title       = 'Thank You!'
+  @page_title       = 'Thanks'
   @name             = session[:name]
   @email            = session[:email]
   @company          = session[:company]
