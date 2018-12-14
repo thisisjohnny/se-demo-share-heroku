@@ -19,12 +19,12 @@ post '/send' do
 
   #salesforce custom REST callout
   salesforce.post('/services/apexrest/Onboarding/registerPartner',
-                 company:         "#{@company}",
-                 companyWebsite:  "#{@company_website}",
-                 companyPhone:    "#{@company_phone}",
-                 firstName:       "#{@first_name}",
-                 lastName:        "#{@last_name}",
-                 email:           "#{@email}"
+                    company:         "#{@company}",
+                    companyWebsite:  "#{@company_website}",
+                    companyPhone:    "#{@company_phone}",
+                    firstName:       "#{@first_name}",
+                    lastName:        "#{@last_name}",
+                    email:           "#{@email}"
   )
 
   session[:name]    = @first_name
@@ -34,7 +34,7 @@ post '/send' do
 end
 
 get '/thanks' do
-  @page_title       = 'Thanks'
+  @page_title       = 'Thank You!'
   @name             = session[:name]
   @email            = session[:email]
   @company          = session[:company]
