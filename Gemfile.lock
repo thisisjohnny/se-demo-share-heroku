@@ -6,12 +6,20 @@ GEM
     faraday_middleware (1.0.0)
       faraday (~> 1.0)
     hashie (3.6.0)
+<<<<<<< HEAD
     json (2.3.1)
     multipart-post (2.1.1)
     mustermann (1.1.1)
       ruby2_keywords (~> 0.0.1)
     rack (2.2.3)
     rack-protection (2.0.8.1)
+=======
+    json (2.1.0)
+    multipart-post (2.0.0)
+    mustermann (1.0.3)
+    rack (2.0.8)
+    rack-protection (2.0.4)
+>>>>>>> 11ea387d7516436b427b551d11370bc7f3bddf9d
       rack
     restforce (3.2.0)
       faraday (>= 0.9.0, <= 1.0)
@@ -30,6 +38,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  rack (>= 2.0.8)!
   restforce (~> 3.1)!
   sinatra (~> 2.0, >= 2.0.4)!
 
