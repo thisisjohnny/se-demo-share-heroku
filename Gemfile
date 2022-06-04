@@ -3,5 +3,5 @@ source 'https://rubygems.org' do
   #gem 'httparty', '~> 0.16.3'
   gem 'sinatra', '~> 2.2', '>= 2.2.0'
   gem 'restforce', '~> 3.1'
-  gem 'rack', '>= 2.1.4'
+  gem 'rack', '2.2.3.1'
 end
