@@ -17,7 +17,7 @@ GEM
     multipart-post (2.2.3)
     mustermann (3.0.0)
       ruby2_keywords (~> 0.0.1)
-    rack (2.2.6.4)
+    rack (2.2.8.1)
     rack-protection (3.0.4)
       rack
     restforce (6.1.0)
